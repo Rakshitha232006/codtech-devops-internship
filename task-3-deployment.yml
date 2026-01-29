@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: codtech-web-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: codtech-web
+  template:
+    metadata:
+      labels:
+        app: codtech-web
+    spec:
+      containers:
+        - name: web-container
+          image: nginx:latest
+          ports:
+            - containerPort: 80
