@@ -1,0 +1,22 @@
+name: Task-2 CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "task-2-cicd.html"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
